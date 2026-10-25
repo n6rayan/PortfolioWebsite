@@ -5035,7 +5035,40 @@ a.badge:focus, a.badge:hover {
 .badge-pill {
   padding-right: .6em;
   padding-left: .6em;
-  border-radius: 10rem
+  border-radius: 10rem;
+  letter-spacing: .05rem;
+  -webkit-transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease
+}
+
+.btn-xl:hover {
+  -webkit-transform: translateY(-2px);
+  transform: translateY(-2px);
+  -webkit-box-shadow: 0 .5rem 1.25rem rgba(0, 0, 0, .18);
+  box-shadow: 0 .5rem 1.25rem rgba(0, 0, 0, .18)
+}
+
+html {
+  scroll-behavior: smooth
+}
+
+body {
+  overflow-x: hidden
+}
+
+img {
+  max-width: 100%
+}
+
+#contact a i {
+  -webkit-transition: color .2s ease, transform .2s ease;
+  transition: color .2s ease, transform .2s ease
+}
+
+#contact a:hover i {
+  color: #03abb6 !important;
+  -webkit-transform: translateY(-3px);
+  transform: translateY(-3px)
 }
 
 .badge-primary {
@@ -9922,7 +9955,13 @@ hr.light {
 }
 
 .page-section {
-  padding: 8rem 0
+  padding: 5rem 0
+}
+
+@media (min-width:768px) {
+  .page-section {
+    padding: 8rem 0
+  }
 }
 
 #mainNav {
@@ -9997,8 +10036,8 @@ hr.light {
 }
 
 header.masthead {
-  padding-top: 10rem;
-  padding-bottom: calc(10rem - 72px);
+  padding-top: 7rem;
+  padding-bottom: calc(5rem - 72px + 2rem);
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(57, 61, 70, .9)), to(rgba(57, 61, 70, .9))), url(../img/bg-masthead.jpg);
   background: linear-gradient(to bottom, rgba(57, 61, 70, .9) 0, rgba(57, 61, 70, .9) 100%), url(../img/bg-masthead.jpg);
   background-position: center;
@@ -10008,7 +10047,21 @@ header.masthead {
 }
 
 header.masthead h1 {
-  font-size: 2.25rem
+  font-size: 1.85rem;
+  line-height: 1.25;
+  letter-spacing: -.02rem;
+  overflow-wrap: break-word
+}
+
+@media (min-width:576px) {
+  header.masthead {
+    padding-top: 10rem;
+    padding-bottom: calc(10rem - 72px)
+  }
+
+  header.masthead h1 {
+    font-size: 2.25rem
+  }
 }
 
 @media (min-width:992px) {
