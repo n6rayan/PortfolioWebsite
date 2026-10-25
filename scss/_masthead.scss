@@ -1,7 +1,7 @@
 // Styling for the masthead
 header.masthead {
   padding-top: 7rem;
-  padding-bottom: calc(5rem - #{$navbar-height} + 2rem);
+  padding-bottom: calc(7rem - #{$navbar-height});
   // replace the masthead.jpg image in the /img directory to change the image
   // if the image name change, make sure to update the url path below!
   background: linear-gradient(to bottom, #{fade-out($brown, .2)} 0%,#{fade-out($brown, .2)} 100%), url('../img/bg-masthead.jpg');

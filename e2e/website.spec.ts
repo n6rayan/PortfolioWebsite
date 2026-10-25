@@ -68,6 +68,15 @@ for (const width of [375, 320]) {
   });
 }
 
+test('mobile menu closes when a nav link is clicked', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 700 });
+  await page.goto(pageUrl);
+  await page.locator('.navbar-toggler').click();
+  await expect(page.locator('#navbarResponsive')).toHaveClass(/\bshow\b/);
+  await page.locator('#navbarResponsive a.js-scroll-trigger[href="#contact"]').click();
+  await expect(page.locator('#navbarResponsive')).toBeHidden();
+});
+
 test('local assets load without 404 and CV link resolves', async ({ page }) => {
   const failed: string[] = [];
   page.on('requestfailed', (r) => { if (r.url().startsWith('file://')) failed.push(r.url()); });
