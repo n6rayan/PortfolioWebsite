@@ -177,12 +177,27 @@ class SyncTest(unittest.TestCase):
         for path in uploaded:
             with self.subTest(path):
                 self.assertFalse(
-                    path.startswith((".git/", ".github/", "scss/", "tests/")),
+                    path.startswith((".git/", ".github/", "scss/", "tests/",
+                                     "e2e/", "node_modules/")),
                 )
-                self.assertNotIn(path, {"README.md", ".gitignore"})
-        for pattern in [".git/*", ".github/*", "scss/*", "tests/*"]:
+                self.assertNotIn(path, {
+                    "README.md", ".gitignore", "package.json",
+                    "pnpm-lock.yaml", "playwright.config.ts",
+                })
+        for pattern in [".git/*", ".github/*", "scss/*", "tests/*", "e2e/*",
+                        "node_modules/*", "test-results/*",
+                        "playwright-report/*"]:
             with self.subTest(pattern):
                 self.assertIn(pattern, excludes(self.args))
+
+    def test_only_site_files_are_uploaded(self):
+        # Anything new at the top level must be excluded or added here on purpose.
+        for path in uploaded_files(self.args):
+            with self.subTest(path):
+                self.assertTrue(
+                    path in {"index.html", "cv.pdf"}
+                    or path.startswith(("css/", "js/", "img/", "vendor/")),
+                )
 
     def test_git_directory_is_excluded(self):
         # .git/ is not tracked, so check the pattern against a real path.

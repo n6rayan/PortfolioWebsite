@@ -5,7 +5,7 @@ My developer portfolio website!
 
 The site is deployed to an S3 bucket by the [Deploy to S3](.github/workflows/deploy-s3.yml) GitHub Actions workflow. It runs on every push to `master`, and can be run by hand from the **Actions** tab (**Deploy to S3** → **Run workflow**).
 
-The workflow runs `aws s3 sync --delete`, so any object in the bucket that isn't in the repository is removed. `.git/`, `.github/`, `scss/`, `tests/`, `README.md` and `.gitignore` are not uploaded.
+The workflow runs `aws s3 sync --delete`, so any object in the bucket that isn't in the repository is removed. Source and development files are not uploaded: `.git/`, `.github/`, `scss/`, `tests/`, `e2e/`, `node_modules/`, Playwright output, `README.md`, `.gitignore`, `package.json`, `pnpm-lock.yaml` and `playwright.config.ts`.
 
 ### Setup
 
